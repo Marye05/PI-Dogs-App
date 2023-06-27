@@ -1,0 +1,110 @@
+.container{
+    height: 100vh;
+    background-image: url('../../assets/img/Otra-de-perro.jpeg');
+    overflow: hidden;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+  
+  .content {
+    position: absolute;
+    width: 45%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    margin: 12px;
+    margin-left: 150px;
+  }
+  
+  .btn {
+    background-color: #0f0f0f;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(240, 234, 234, 0.61);
+    font-weight: 900;
+    font-size: 2em;
+    padding: 1rem;
+    box-sizing: border-box;
+    height: 50px;
+    margin: 12px;
+    font-family: 'Robot';
+    backdrop-filter: blur(1px);
+  }
+  .btn:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+    background-color: rgba(20, 20, 20, 0.521);
+  }
+  
+  .textDe {
+    text-decoration: none;
+  }
+  
+  .typewriter h1 {
+    font-size: 70px;
+    color: black;
+    font-family: 'Robot';
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 0.15em solid #0f0f0ff1; /* The typwriter cursor */
+    white-space:pre-wrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: 0.15em; /* Adjust as needed */
+    animation: typing 5s steps(40, end), blink-caret 0.5s step-end infinite;
+    margin: 12px;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 2px black;
+  }
+
+  
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+  }
+  @media (max-width: 800px) {
+    .typewriter h1 {
+      font-size: 40px; /* Tamaño de fuente más pequeño */
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .typewriter h1 {
+      font-size: 30px; /* Tamaño de fuente más pequeño */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .typewriter h1 {
+      font-size: 23px; /* Tamaño de fuente más pequeño */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .typewriter h1 {
+      font-size: 20px; /* Tamaño de fuente más pequeño */
+    }
+  }

@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: -20px;
+  }
+  
+  .backgroundImage {
+    flex: 1;
+    background-image: url('../../assets/img/Imagen-Create.jpg'); 
+    background-size: cover;
+    background-position: center;
+    padding-left: 20em;
+  }
+  
+  .formContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form {
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .field {
+    margin-bottom: 16px;
+    padding: 15px;
+    position: relative;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 97%;
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+    position: absolute;
+  }
+  
+  .select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .selectedTemps {
+    display: flex;
+    flex-wrap: wrap; 
+    max-width: 100%; 
+    margin-top: 8px;
+  }
+  
+  .selectedTemp {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .removeButton {
+    margin-left: 8px;
+    padding: 4px;
+    border: none;
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+  }
+  
+  .createButton {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: palevioletred;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
