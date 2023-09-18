@@ -11,7 +11,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
   const tempState = useSelector((state) => state.temperaments);
-
+ 
   //Paginado
   const [currentPage, setCurrentPage] = useState(1); // Página actual, comienza en 1
   const [dogsPerPage] = useState(8); // Cantidad de perros por página
@@ -137,11 +137,11 @@ const Home = () => {
             key={dog.id}
             id={dog.id}
             name={dog.name}
-            image={dog.image}
+            image={dog.reference_image_id}
             weight={dog.weight}
             height={dog.height}
-            temperaments={dog.temperaments}
             temperament={dog.temperament}
+            Temperaments={dog.Temperaments}
             created={dog.created}
           />
         ))}

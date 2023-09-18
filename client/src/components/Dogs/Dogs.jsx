@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Dogs.module.css";
 
-const Dogs = ({ id, name, weight, height, image, temperaments, temperament, created }) => {
+const Dogs = ({ id, name, weight, height, reference_image_id, temperament, Temperaments, created }) => {
   const [, setDeleted] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const dispatch = useDispatch();
@@ -29,6 +29,7 @@ const Dogs = ({ id, name, weight, height, image, temperaments, temperament, crea
     };
   }, [timer]);
 
+
   return (
     <div className={styles.dogCard}>
       <div className={styles.content}>
@@ -38,18 +39,16 @@ const Dogs = ({ id, name, weight, height, image, temperaments, temperament, crea
         </Link>
 
         <div className={styles.imageContainer}>
-          <img className={styles.image} src={image} alt={name} />
+          <img className={styles.image} src={reference_image_id} alt={name} />
         </div>
-
-        {created && Array.isArray(temperaments) && temperaments.length ? (
+        {created && Array.isArray(Temperaments) && Temperaments.length 
+        ? (
           <p className={styles.temperaments}>
-            Temperamento: {temperaments.join(", ")}
-          </p>
-        ) : Array.isArray(temperament) && temperament.length ? (
+            Temperamento: {Temperaments.map((temp) => temp.name).join(', ')}</p>) 
+        : (
           <p className={styles.temperaments}>
-            Temperamento: {temperament?.join(", ")}
-          </p>
-        ) : null}
+            Temperamento: {temperament}
+          </p>)}
         
         <p className={styles.info}>Peso: {weight} kg</p>
         <p className={styles.info}>Altura: {height} cm</p>

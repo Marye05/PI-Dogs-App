@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postDogs, getTemperaments } from "../../redux/actions";
 import validate from "./validate"
 import styles from "../Create/Create.module.css";
+import Select from 'react-select';
 
 const Create = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,7 @@ const Create = () => {
     weight: "",
     life_span: "",
     image: "",
-    temperament: [],
-    
+    temperament: []    
   });
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Create = () => {
 
 
   const [errors, setErrors] = useState({});
-  
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleChange = (event) => {
     // Manejo del input
@@ -34,25 +34,27 @@ const Create = () => {
   };
 
   const handleSelect = (event) => {
-    if (event.target.name === 'temperament' &&
-      !input.temperament.includes(event.target.value)){
-
-      } else if (event.target.value !== 'nada') {
-        setInput({ ...input,
-          [event.target.name]: [...input.temperament, event.target.value],
-        });
-    } else {
-      setInput({
-        ...input,
-        [event.target.name]: event.target.value,
-      });
-    }
+    setSelectedOptions(event);
   };
+
+  const filteredTemperaments = useCallback(() => {
+    const positions = selectedOptions.map((filterItem) => {
+      const position = temperaments.indexOf(filterItem.value);
+      return { value: filterItem.value, position };
+    });
+    const positionsArray = positions.map((item) => item.position);
+    return positionsArray;
+  }, [selectedOptions,temperaments]);
+  
+  useEffect(() => {
+    const arrayResult = filteredTemperaments();
+    setInput((prevInput) => ({ ...prevInput, temperament: arrayResult }));
+  }, [filteredTemperaments]);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const validationErrors = validate(input);
-
     if (Object.keys(validationErrors).length === 0) {
       dispatch(postDogs(input));
       setInput({
@@ -61,12 +63,10 @@ const Create = () => {
         weight: "",
         life_span: "",
         image: "",
-        temperament: [],
+        temperament: [], // enviar los numeros de los temperamentos
       });
     }
   };
-
-
 
   return (
     <div className={styles.container}>
@@ -143,18 +143,15 @@ const Create = () => {
               {errors.temperaments && (
                 <p className={styles.error}>{errors.temperaments}</p>
               )}
-              <select
-                name="temperament"
+              <Select
+                options={temperaments.map((option) => ({
+                  value: option,
+                  label: option,
+                }))}
+                isMulti
+                value={selectedOptions}
                 onChange={handleSelect}
-                className={styles.select}
-              >
-                <option value="nada">Seleccionar</option>
-                {temperaments.map((temp) => (
-                  <option key={temp} value={temp}>
-                    {temp}
-                  </option>
-                ))}
-              </select>
+              />
              
             </div>
             <button type="submit" className={styles.createButton}>

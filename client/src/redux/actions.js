@@ -72,11 +72,20 @@ export const orderByName = (payload) => {
 }
 
 export const deleteDog = (id) => async (dispatch) => {
-    return async function(){
-    const response = await axios.delete(`http://localhost:3001/dogs/delete/${id}`);
-    dispatch({ type: DELETE_DOG, payload: response.data});
-}
-}
+    try {
+        if (!id) {
+            throw new Error("ID invalido");
+        }
+        const response = await axios.delete(`http://localhost:3001/dogs/delete/${id}`);
+        dispatch({
+            type: DELETE_DOG,
+            payload: response.data
+        });
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export const deleteDogId = () => { // Actualización de estado para el detalle
     return {

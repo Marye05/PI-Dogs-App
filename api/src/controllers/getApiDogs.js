@@ -8,10 +8,10 @@ const getApiDogs = async () => {
             id: dog.id,
             name: dog.name,
             life_span: dog.life_span,
-            image: dog.image.url,
+            reference_image_id: dog.reference_image_id,
             height: dog["height"]["metric"], //Acceder a las propiedades mediante bracket notation
             weight: dog["weight"]["metric"], // ya que siempre son las mismas
-            temperament: dog.temperament?.split(",").map(temperament => temperament.trim())
+            temperament: dog.temperament
            
         }
     })
